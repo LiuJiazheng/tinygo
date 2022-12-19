@@ -1,5 +1,4 @@
-//go:build darwin || (linux && !baremetal && !wasm_freestanding)
-// +build darwin linux,!baremetal,!wasm_freestanding
+//go:build darwin || (linux && !baremetal)
 
 // target wasi sets GOOS=linux and thus the +linux build tag,
 // even though it doesn't show up in "tinygo info target -wasi"

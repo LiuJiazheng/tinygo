@@ -1,5 +1,4 @@
-//go:build !baremetal && !wasm && !wasm_freestanding
-// +build !baremetal,!wasm,!wasm_freestanding
+//go:build !baremetal && !wasm
 
 // This file assumes there is a libc available that runs on a real operating
 // system.

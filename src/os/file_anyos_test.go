@@ -1,5 +1,4 @@
-//go:build !baremetal && !js && !wasm_freestanding
-// +build !baremetal,!js,!wasm_freestanding
+//go:build !baremetal && !js
 
 package os_test
 

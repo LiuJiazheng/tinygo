@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-//go:build !baremetal && !js && !wasi && !wasm_freestanding
-// +build !baremetal,!js,!wasi,!wasm_freestanding
+//go:build !baremetal && !js && !wasi
 
 package os_test
 
