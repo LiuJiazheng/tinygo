@@ -104,6 +104,8 @@ func testClangAttributes(t *testing.T, options *compileopts.Options) {
 		flags = append(flags, "-Wno-missing-sysroot", "-Wno-incompatible-sysroot")
 	}
 	err = runCCompiler(flags...)
+	t.Logf("$$$ c flags %v", flags)
+	t.Logf("$$$ target features %s, options llvm features %s", config.Target.Features, config.Options.LLVMFeatures)
 	if err != nil {
 		t.Fatalf("failed to compile %s: %s", srcpath, err)
 	}
