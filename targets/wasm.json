@@ -1,7 +1,7 @@
 {
 	"llvm-target":   "wasm32-unknown-wasi",
 	"cpu":           "generic",
-	"features":      "+no-bulk-memory",
+	"features":      "",
 	"build-tags":    ["tinygo.wasm"],
 	"goos":          "js",
 	"goarch":        "wasm",
