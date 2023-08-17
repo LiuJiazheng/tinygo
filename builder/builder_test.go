@@ -103,8 +103,8 @@ func testClangAttributes(t *testing.T, options *compileopts.Options) {
 		// something other than MacOS.
 		flags = append(flags, "-Wno-missing-sysroot", "-Wno-incompatible-sysroot")
 	}
-	err = runCCompiler(flags...)
 	t.Logf("$$$ c flags %v", flags)
+	err = runCCompiler(flags...)
 	t.Logf("$$$ target features %s, options llvm features %s", config.Target.Features, config.Options.LLVMFeatures)
 	if err != nil {
 		t.Fatalf("failed to compile %s: %s", srcpath, err)
@@ -137,6 +137,7 @@ func testClangAttributes(t *testing.T, options *compileopts.Options) {
 	if cpu != config.CPU() {
 		t.Errorf("target has CPU %#v but Clang makes it CPU %#v", config.CPU(), cpu)
 	}
+	t.Logf("$$$ clang features %s, config features %s", features, config.Features())
 	if features != config.Features() {
 		if hasBuiltinTools || runtime.GOOS != "linux" {
 			// Skip this step when using an external Clang invocation on Linux.
