@@ -2,6 +2,7 @@ package builder
 
 import (
 	"errors"
+	"fmt"
 	"os"
 	"os/exec"
 
@@ -18,6 +19,8 @@ func runCCompiler(flags ...string) error {
 		}
 		flags = append(flags, "-I"+headerPath)
 		cmd := exec.Command(os.Args[0], append([]string{"clang"}, flags...)...)
+		println("$$$ inside enabled, commnad name " + os.Args[0] + "with clang flags")
+		fmt.Println(flags)
 		cmd.Stdout = os.Stdout
 		cmd.Stderr = os.Stderr
 		return cmd.Run()
