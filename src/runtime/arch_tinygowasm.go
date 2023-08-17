@@ -39,7 +39,7 @@ const (
 // pages.
 //
 //export llvm.wasm.memory.size.i32
-func wasm_memory_size(index int32) int32
+func __builtin_wasm_memory_size(index int32) int32
 
 // wasm_memory_grow invokes the "memory.grow" instruction, which attempts to
 // increase the size of the memory at the given index (always wasmMemoryIndex),
@@ -47,7 +47,7 @@ func wasm_memory_size(index int32) int32
 // failure.
 //
 //export llvm.wasm.memory.grow.i32
-func wasm_memory_grow(index int32, delta int32) int32
+func __builtin_wasm_memory_grow(index int32, delta int32) int32
 
 var (
 	// heapStart is the current memory offset which starts the heap. The heap
@@ -55,7 +55,7 @@ var (
 	heapStart = uintptr(unsafe.Pointer(&heapStartSymbol))
 
 	// heapEnd is the current memory length in bytes.
-	heapEnd = uintptr(wasm_memory_size(wasmMemoryIndex) * wasmPageSize)
+	heapEnd = uintptr(__builtin_wasm_memory_size(wasmMemoryIndex) * wasmPageSize)
 
 	globalsStart = uintptr(unsafe.Pointer(&globalsStartSymbol))
 	globalsEnd   = uintptr(unsafe.Pointer(&heapStartSymbol))
@@ -77,14 +77,14 @@ func getCurrentStackPointer() uintptr
 // otherwise.
 func growHeap() bool {
 	// Grow memory by the available size, which means the heap size is doubled.
-	memorySize := wasm_memory_size(wasmMemoryIndex)
-	result := wasm_memory_grow(wasmMemoryIndex, memorySize)
+	memorySize := __builtin_wasm_memory_size(wasmMemoryIndex)
+	result := __builtin_wasm_memory_grow(wasmMemoryIndex, memorySize)
 	if result == -1 {
 		// Grow failed.
 		return false
 	}
 
-	setHeapEnd(uintptr(wasm_memory_size(wasmMemoryIndex) * wasmPageSize))
+	setHeapEnd(uintptr(__builtin_wasm_memory_size(wasmMemoryIndex) * wasmPageSize))
 
 	// Heap has grown successfully.
 	return true
