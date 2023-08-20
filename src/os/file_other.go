@@ -3,6 +3,7 @@
 package os
 
 import (
+	"io"
 	_ "unsafe"
 )
 
@@ -45,11 +46,19 @@ func NewFile(fd uintptr, name string) *File {
 // Read reads up to len(b) bytes from machine.Serial.
 // It returns the number of bytes read and any error encountered.
 func (f stdioFileHandle) Read(b []byte) (n int, err error) {
+	if f != 0 {
+		return 0, ErrUnsupported
+	}
+
 	if len(b) == 0 {
 		return 0, nil
 	}
 
 	size := buffered()
+	if size < 0 {
+		return 0, io.EOF
+	}
+
 	for size == 0 {
 		gosched()
 		size = buffered()
