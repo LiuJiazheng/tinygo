@@ -1,7 +1,7 @@
 {
 	"llvm-target":   "wasm32-unknown-wasi",
 	"cpu":           "generic",
-	"features":      "+bulk-memory,+nontrapping-fptoint,+sign-ext",
+	"features":      "",
 	"build-tags":    ["tinygo.wasm"],
 	"goos":          "js",
 	"goarch":        "wasm",
@@ -10,9 +10,7 @@
 	"scheduler":     "asyncify",
 	"default-stack-size": 16384,
 	"cflags": [
-		"-mbulk-memory",
-		"-mnontrapping-fptoint",
-		"-msign-ext"
+		"-mno-bulk-memory"
 	],
 	"ldflags": [
 		"--allow-undefined-file={root}/targets/wasm-undefined.txt",

@@ -1,4 +1,5 @@
-//go:build darwin || (linux && !baremetal)
+//go:build darwin || (linux && !baremetal && !wasm_freestanding)
+// +build darwin linux,!baremetal,!wasm_freestanding
 
 // Copyright 2016 The Go Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style
@@ -9,6 +10,11 @@ package os
 import (
 	"syscall"
 )
+
+// Sync is a stub, not yet implemented
+func (f *File) Sync() error {
+	return ErrNotImplemented
+}
 
 // Stat returns the FileInfo structure describing file.
 // If there is an error, it will be of type *PathError.

@@ -1,4 +1,5 @@
-//go:build windows || darwin || (linux && !baremetal)
+//go:build windows || darwin || (linux && !baremetal && !wasm_freestanding)
+// +build windows darwin linux,!baremetal,!wasm_freestanding
 
 package os_test
 

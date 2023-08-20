@@ -1,4 +1,5 @@
-//go:build linux && !baremetal
+//go:build linux && !baremetal && !wasm_freestanding
+// +build linux,!baremetal,!wasm_freestanding
 
 // Copyright 2009 The Go Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style
