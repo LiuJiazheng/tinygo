@@ -1,4 +1,5 @@
-//go:build !baremetal && !js && !wasi
+//go:build !baremetal && !js && !wasi && !wasm_freestanding
+// +build !baremetal,!js,!wasi,!wasm_freestanding
 
 // Copyright 2020 The Go Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style

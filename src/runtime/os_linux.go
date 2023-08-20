@@ -1,4 +1,5 @@
-//go:build linux && !baremetal && !nintendoswitch && !wasi
+//go:build linux && !baremetal && !nintendoswitch && !wasi && !wasm_freestanding
+// +build linux,!baremetal,!nintendoswitch,!wasi,!wasm_freestanding
 
 package runtime
 
@@ -109,7 +110,7 @@ func markGlobals() {
 				markRoots(start, end)
 			}
 		}
-		headerPtr = unsafe.Add(headerPtr, ehdr_start.phentsize)
+		headerPtr = unsafe.Pointer(uintptr(headerPtr) + uintptr(ehdr_start.phentsize))
 	}
 }
 

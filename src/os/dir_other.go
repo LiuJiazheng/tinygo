@@ -1,4 +1,5 @@
-//go:build baremetal || js || windows
+//go:build baremetal || js || wasi || windows || wasm_freestanding
+// +build baremetal js wasi windows wasm_freestanding
 
 // Copyright 2009 The Go Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style
@@ -11,9 +12,6 @@ import (
 )
 
 type dirInfo struct {
-}
-
-func (*dirInfo) close() {
 }
 
 func (f *File) readdir(n int, mode readdirMode) (names []string, dirents []DirEntry, infos []FileInfo, err error) {

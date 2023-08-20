@@ -1,4 +1,5 @@
-//go:build windows || darwin || (linux && !baremetal && !wasi)
+//go:build windows || darwin || (linux && !baremetal && !wasi && !wasm_freestanding)
+// +build windows darwin linux,!baremetal,!wasi,!wasm_freestanding
 
 // Copyright 2021 The Go Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style

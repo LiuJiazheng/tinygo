@@ -1,4 +1,6 @@
-//go:build linux && (baremetal || nintendoswitch || wasi)
+//go:build linux && (baremetal || nintendoswitch || wasi || wasm_freestanding)
+// +build linux
+// +build baremetal nintendoswitch wasi wasm_freestanding
 
 // Other systems that aren't operating systems supported by the Go toolchain
 // need to pretend to be an existing operating system. Linux seems like a good
