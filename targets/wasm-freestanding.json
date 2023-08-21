@@ -6,7 +6,7 @@
 	"goos":          "linux",
 	"goarch":        "arm",
 	"linker":        "wasm-ld",
-	"libc":          "",
+	"libc":          "wasi-libc",
 	"scheduler":     "asyncify",
 	"default-stack-size": 16384,
 	"cflags": [
